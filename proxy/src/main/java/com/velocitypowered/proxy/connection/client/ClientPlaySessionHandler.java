@@ -279,15 +279,11 @@ public class ClientPlaySessionHandler implements MinecraftSessionHandler {
   public void writabilityChanged() {
     boolean writable = player.getConnection().getChannel().isWritable();
 
-    if (!writable) {
-      // We might have packets queued for the server, so flush them now to free up memory.
-      player.getConnection().flush();
-    }
-
     VelocityServerConnection serverConn = player.getConnectedServer();
     if (serverConn != null) {
       MinecraftConnection smc = serverConn.getConnection();
-      if (smc != null) {
+      if (smc != null && !smc.isClosed()) {
+        logger.info("{} channel is now {}", player, writable ? "writable" : "not writable");
         smc.setAutoReading(writable);
       }
     }
