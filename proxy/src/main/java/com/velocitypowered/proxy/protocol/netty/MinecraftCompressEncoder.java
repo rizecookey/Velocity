@@ -38,9 +38,7 @@ public class MinecraftCompressEncoder extends MessageToByteEncoder<ByteBuf> {
   @Override
   protected ByteBuf allocateBuffer(ChannelHandlerContext ctx, ByteBuf msg, boolean preferDirect)
       throws Exception {
-    // Follow the advice of https://github.com/ebiggers/libdeflate/blob/master/libdeflate.h#L103
-    // here for compression. The maximum buffer size if the data compresses well (which is almost
-    // always the case) is one less the input buffer.
+    // We add an extra byte to the buffer size in case we hit the uncompressed case.
     int initialBufferSize = msg.readableBytes() + 1;
     return MoreByteBufUtils.preferredBuffer(ctx.alloc(), compressor, initialBufferSize);
   }
