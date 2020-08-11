@@ -31,15 +31,22 @@ public enum ProtocolVersion {
   MINECRAFT_1_14_1(480, "1.14.1"),
   MINECRAFT_1_14_2(485, "1.14.2"),
   MINECRAFT_1_14_3(490, "1.14.3"),
+  MINECRAFT_1_14_COMBAT_1(500, "1_14_combat-212796", ProtocolFlags.COMBAT_TEST),
   MINECRAFT_1_14_4(498, "1.14.4"),
+  MINECRAFT_1_14_COMBAT_2(501, "1.14_combat-0", ProtocolFlags.COMBAT_TEST),
+  MINECRAFT_1_14_COMBAT_3(502, "1.14_combat-3", ProtocolFlags.COMBAT_TEST),
   MINECRAFT_1_15(573, "1.15"),
+  MINECRAFT_1_15_COMBAT_4(600, "1.15_combat-0", ProtocolFlags.COMBAT_TEST),
   MINECRAFT_1_15_1(575, "1.15.1"),
   MINECRAFT_1_15_2(578, "1.15.2"),
+  MINECRAFT_1_15_COMBAT_5(601, "1.15_combat-6", ProtocolFlags.COMBAT_TEST),
   MINECRAFT_1_16(735, "1.16"),
-  MINECRAFT_1_16_1(736, "1.16.1");
+  MINECRAFT_1_16_1(736, "1.16.1"),
+  MINECRAFT_1_16_COMBAT_6(801, "1.16_combat-0", ProtocolFlags.COMBAT_TEST);
 
   private final int protocol;
   private final String name;
+  private final ProtocolFlags flags;
 
   /**
    * Represents the lowest supported version.
@@ -90,6 +97,13 @@ public enum ProtocolVersion {
   ProtocolVersion(int protocol, String name) {
     this.protocol = protocol;
     this.name = name;
+    this.flags = ProtocolFlags.RELEASE;
+  }
+
+  ProtocolVersion(int protocol, String name, ProtocolFlags flags) {
+    this.protocol = protocol;
+    this.name = name;
+    this.flags = flags;
   }
 
   /**
@@ -163,5 +177,14 @@ public enum ProtocolVersion {
   @Override
   public String toString() {
     return name;
+  }
+
+  /**
+   * Returns this {@link ProtocolVersion}'s {@link ProtocolFlags}.
+   *
+   * @return the {@link ProtocolFlags} for this {@link ProtocolVersion}
+   */
+  public ProtocolFlags getFlags() {
+    return this.flags;
   }
 }
