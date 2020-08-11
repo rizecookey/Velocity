@@ -42,6 +42,7 @@ public enum ProtocolVersion {
   MINECRAFT_1_15_COMBAT_5(601, "1.15_combat-6", ProtocolFlags.COMBAT_TEST),
   MINECRAFT_1_16(735, "1.16"),
   MINECRAFT_1_16_1(736, "1.16.1"),
+  MINECRAFT_1_16_2(751, "1.16.2"),
   MINECRAFT_1_16_COMBAT_6(801, "1.16_combat-0", ProtocolFlags.COMBAT_TEST);
 
   private final int protocol;
