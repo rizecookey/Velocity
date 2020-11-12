@@ -47,7 +47,7 @@ public enum ProtocolVersion {
   MINECRAFT_1_16_COMBAT_7(802, "1.16_combat-3", ProtocolFlags.COMBAT_TEST),
   MINECRAFT_1_16_COMBAT_8(803, "1.16_combat-5", ProtocolFlags.COMBAT_TEST),
   MINECRAFT_1_16_3(753, "1.16.3"),
-  MINECRAFT_1_16_4(754, "1.16.3");
+  MINECRAFT_1_16_4(754, "1.16.4");
 
   private final int protocol;
   private final String name;
